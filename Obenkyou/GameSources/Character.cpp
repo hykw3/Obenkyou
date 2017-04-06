@@ -74,11 +74,7 @@ namespace basecross{
 		PtrTransform->SetScale(m_StartScale.x, m_StartScale.y, 1.0f);
 		PtrTransform->SetRotation(0, 0, 0);
 		PtrTransform->SetPosition(m_StartPos.x, m_StartPos.y, 0.0f);
-		//頂点とインデックスを指定してスプライト作成
-		auto PtrDraw = AddComponent<PCTSpriteDraw>(vertices, indices);
-		PtrDraw->SetWrapSampler(true);
-		PtrDraw->SetTextureResource(m_TextureKey);
-
+		
 		auto PtrAction = AddComponent<Action>();
 		PtrAction->AddRotateBy(1.0f, Vector3(0, 0, XM_PI* -1));
 	
