@@ -12,3 +12,4 @@
 #include "Character.h"
 #include "Player.h"
 #include "stage_title.h"
+#include "MyCamera.h"

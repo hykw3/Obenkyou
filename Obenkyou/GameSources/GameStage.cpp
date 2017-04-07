@@ -16,10 +16,10 @@ namespace basecross {
 	void GameStage::CreateViewLight() {
 		auto PtrView = CreateView<SingleView>();
 		//ビューのカメラの設定
-		auto PtrLookAtCamera = ObjectFactory::Create<LookAtCamera>();
+		auto PtrLookAtCamera = ObjectFactory::Create<MyCamera>();
 		PtrView->SetCamera(PtrLookAtCamera);
-		PtrLookAtCamera->SetEye(Vector3(0.0f, 5.0f, -5.0f));
-		PtrLookAtCamera->SetAt(Vector3(0.0f, 0.0f, 0.0f));
+		PtrLookAtCamera->SetEye(Vector3(0.0f, 13.0f, -5.0f));
+		PtrLookAtCamera->SetAt(Vector3(0.0f, -10.0f, 0.0f));
 		//マルチライトの作成
 		auto PtrMultiLight = CreateLight<MultiLight>();
 		//デフォルトのライティングを指定
@@ -125,7 +125,7 @@ namespace basecross {
 			//プレーヤーの作成
 			CreatePlayer();
 			//Boxの作成
-			CreateBox();
+			//CreateBox();
 			//Spriteの作成
 			CreateSprite();
 			CreateSpark();

@@ -33,7 +33,7 @@ namespace basecross{
 			if (CntlVec[0].fThumbLX != 0 || CntlVec[0].fThumbLY != 0) {
 				float MoveLength = 0;	//動いた時のスピード
 				auto PtrTransform = GetComponent<Transform>();
-				auto PtrCamera = OnGetDrawCamera();
+				auto PtrCamera = dynamic_pointer_cast<MyCamera>(OnGetDrawCamera());
 				//進行方向の向きを計算
 				Vector3 Front = PtrTransform->GetPosition() - PtrCamera->GetEye();
 				Front.y = 0;
@@ -185,7 +185,7 @@ namespace basecross{
 		auto ScenePtr = App::GetApp()->GetScene<Scene>();
 		if (nokoriTime < 0.0f) {
 			nokoriTime = 10;
-			PostEvent(0.0f, GetThis<Player>(), ScenePtr, L"Tostage_title");
+			//PostEvent(0.0f, GetThis<Player>(), ScenePtr, L"Tostage_title");
 		}
 		//プレイヤーの移動
 		MovePlayer();
