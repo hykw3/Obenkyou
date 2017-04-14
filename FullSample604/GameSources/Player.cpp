@@ -23,7 +23,7 @@ namespace basecross{
 
 		//初期位置などの設定
 		auto Ptr = AddComponent<Transform>();
-		Ptr->SetScale(0.25f, 0.25f, 0.25f);	//直径25センチの球体
+		Ptr->SetScale(1.0f, 0.25f, 0.25f);	//直径25センチの球体
 		Ptr->SetRotation(0.0f, 0.0f, 0.0f);
 		Ptr->SetPosition(0, 0.125f, 0);
 
@@ -41,11 +41,11 @@ namespace basecross{
 		//影をつける（シャドウマップを描画する）
 		auto ShadowPtr = AddComponent<Shadowmap>();
 		//影の形（メッシュ）を設定
-		ShadowPtr->SetMeshResource(L"DEFAULT_SPHERE");
+		ShadowPtr->SetMeshResource(L"DEFAULT_CUBE");
 		//描画コンポーネントの設定
 		auto PtrDraw = AddComponent<BcPNTStaticDraw>();
 		//描画するメッシュを設定
-		PtrDraw->SetMeshResource(L"DEFAULT_SPHERE");
+		PtrDraw->SetMeshResource(L"DEFAULT_CUBE");
 		//描画するテクスチャを設定
 		PtrDraw->SetTextureResource(L"TRACE_TX");
 
