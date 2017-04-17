@@ -128,6 +128,19 @@ namespace basecross{
 		m_VPic = (float)_wtof(VPicStr.c_str());
 	}
 
+	TilingFixedBox::TilingFixedBox
+	(
+		const shared_ptr<Stage>& StagePtr,
+		const Vector3 & Scale, 
+		const Vector3 & Rotation, 
+		const Vector3 & Position
+	):
+		GameObject(StagePtr),
+		m_Scale(Scale),
+		m_Rotation(Rotation),
+		m_Position(Position)
+	{}
+
 	TilingFixedBox::~TilingFixedBox() {}
 	//èâä˙âª
 	void TilingFixedBox::OnCreate() {

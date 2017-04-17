@@ -41,20 +41,28 @@ namespace basecross {
 			//オブジェクトのグループを作成する
 			auto Group = CreateSharedObjectGroup(L"EnemyGroup");
 			//ゲームオブジェクトビルダー
-			GameObjecttXMLBuilder Builder;
-			//ゲームオブジェクトの登録
-			Builder.Register<TilingPlate>(L"TilingPlate");
-			Builder.Register<TilingFixedBox>(L"TilingFixedBox");
-			Builder.Register<Enemy1>(L"Enemy1");
-			Builder.Register<Enemy2>(L"Enemy2");
-			Builder.Register<Enemy3>(L"Enemy3");
+			//GameObjecttXMLBuilder Builder;
+			////ゲームオブジェクトの登録
+			//Builder.Register<TilingPlate>(L"TilingPlate");
+			//Builder.Register<TilingFixedBox>(L"TilingFixedBox");
+			//Builder.Register<Enemy1>(L"Enemy1");
+			//Builder.Register<Enemy2>(L"Enemy2");
+			//Builder.Register<Enemy3>(L"Enemy3");
+			//wstring DataDir;
+			//App::GetApp()->GetDataDirectory(DataDir);
+			////XMLからゲームオブジェクトの構築
+			//wstring XMLStr = DataDir + L"GameStage";
+			//XMLStr += Util::IntToWStr(m_StageNum);
+			//XMLStr += L".xml";
+			//Builder.Build(GetThis<Stage>(), XMLStr, L"GameStage/GameObject");
+
+			//Csvオブジェクト配置
 			wstring DataDir;
 			App::GetApp()->GetDataDirectory(DataDir);
-			//XMLからゲームオブジェクトの構築
-			wstring XMLStr = DataDir + L"GameStage";
-			XMLStr += Util::IntToWStr(m_StageNum);
-			XMLStr += L".xml";
-			Builder.Build(GetThis<Stage>(), XMLStr, L"GameStage/GameObject");
+			DataDir += L"StageCsv\\Stage1.csv";
+			StageCreate stageCreate(GetThis<GameStage>(), DataDir, Pivot::LeftDown);
+			stageCreate.OnCreate();
+
 			//プレーヤーの作成
 			CreatePlayer();
 		}

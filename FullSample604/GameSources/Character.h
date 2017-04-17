@@ -39,6 +39,13 @@ namespace basecross{
 	public:
 		//\’z‚Æ”jŠü
 		TilingFixedBox(const shared_ptr<Stage>& StagePtr, IXMLDOMNodePtr pNode);
+		TilingFixedBox
+		(
+			const shared_ptr<Stage>& StagePtr,
+			const Vector3& Scale,
+			const Vector3& Rotation,
+			const Vector3& Position
+		);
 		virtual ~TilingFixedBox();
 		//‰Šú‰»
 		virtual void OnCreate() override;
