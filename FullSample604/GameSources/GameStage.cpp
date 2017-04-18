@@ -26,6 +26,55 @@ namespace basecross {
 		PtrMultiLight->SetDefaultLighting();
 	}
 
+	void GameStage::CreatePlateMesh(){
+		if (!App::GetApp()->CheckResource<MeshResource>(L"MY_PNTnT_SQUARE")) {
+			//プレート用のメッシュを作成
+			vector<VertexPositionNormalTexture> vertices;
+			vector<VertexPositionNormalTangentTexture> new_pntnt_vertices;
+			vector<uint16_t> indices;
+			MeshUtill::CreateSquare(1.0f, vertices, indices);
+			for (size_t i = 0; i < vertices.size(); i++) {
+				VertexPositionNormalTangentTexture new_pntnt_v;
+				new_pntnt_v.position = vertices[i].position;
+				new_pntnt_v.normal = vertices[i].normal;
+				if (vertices[i].textureCoordinate.x == 1.0f) {
+					new_pntnt_v.textureCoordinate.x = 20.0f;
+				}
+				if (vertices[i].textureCoordinate.y == 1.0f) {
+					new_pntnt_v.textureCoordinate.y = 20.0f;
+				}
+				Vector3 n = Vector3EX::Cross(new_pntnt_v.normal, Vector3(0, 1, 0));
+				new_pntnt_v.tangent = n;
+				new_pntnt_v.tangent.w = 0.0f;
+				new_pntnt_vertices.push_back(new_pntnt_v);
+			}
+			MeshUtill::SetNormalTangent(new_pntnt_vertices);
+			App::GetApp()->RegisterResource(L"MY_PNTnT_SQUARE", MeshResource::CreateMeshResource(new_pntnt_vertices, indices, false));
+		}
+	}
+
+	//プレートの作成
+	void GameStage::CreatePlate() {
+		//ステージへのゲームオブジェクトの追加
+		auto Ptr = AddGameObject<GameObject>();
+		auto PtrTrans = Ptr->GetComponent<Transform>();
+		Quaternion Qt;
+		Qt.RotationRollPitchYawFromVector(Vector3(XM_PIDIV2, 0, 0));
+		PtrTrans->SetScale(200.0f, 200.0f, 1.0f);
+		PtrTrans->SetQuaternion(Qt);
+		PtrTrans->SetPosition(0.0f, 0.0f, 0.0f);
+
+		//描画コンポーネントの追加
+		auto DrawComp = Ptr->AddComponent<PNTStaticDraw>();
+		//描画コンポーネントに形状（メッシュ）を設定
+		DrawComp->SetMeshResource(L"DEFAULT_SQUARE");
+		//自分に影が映りこむようにする
+		DrawComp->SetOwnShadowActive(true);
+
+		//描画コンポーネントテクスチャの設定
+		DrawComp->SetTextureResource(L"SKY_TX");
+
+	}
 	//プレイヤーの作成
 	void GameStage::CreatePlayer() {
 		//プレーヤーの作成
@@ -65,6 +114,9 @@ namespace basecross {
 
 			//プレーヤーの作成
 			CreatePlayer();
+			//プレートの作成
+			CreatePlate();
+
 		}
 		catch (...) {
 			throw;
