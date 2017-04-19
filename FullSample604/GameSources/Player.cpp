@@ -51,18 +51,11 @@ namespace basecross{
 
 		//透明処理
 		SetAlphaActive(true);
-		//カメラを得る
-		auto PtrCamera = dynamic_pointer_cast<LookAtCamera>(OnGetDrawCamera());
-		if (PtrCamera) {
-			//LookAtCameraである
-			//LookAtCameraに注目するオブジェクト（プレイヤー）の設定
-			PtrCamera->SetTargetObject(GetThis<GameObject>());
-			PtrCamera->SetTargetToAt(Vector3(0, 0.25f, 0));
-		}
 		//ステートマシンの構築
 		m_StateMachine.reset(new StateMachine<Player>(GetThis<Player>()));
 		//最初のステートをPlayerDefaultに設定
 		m_StateMachine->ChangeState(PlayerDefaultState::Instance());
+
 	}
 
 	//更新

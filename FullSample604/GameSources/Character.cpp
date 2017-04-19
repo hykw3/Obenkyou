@@ -177,6 +177,40 @@ namespace basecross{
 		PtrDraw->SetSamplerState(SamplerState::LinearWrap);
 
 	}
+	//--------------------------------------------------------------------------------------
+	//	用途: カメラ
+	//--------------------------------------------------------------------------------------
+	CameraBox::CameraBox(
+		const shared_ptr<Stage>& StagePtr,
+		const Vector3 & Scale,
+		const Vector3 & Rotation,
+		const Vector3 & Position
+		) :
+		GameObject(StagePtr),
+		m_Scale(Scale),
+		m_Rotation(Rotation),
+		m_Position(Position)
+	{
+	}
+	CameraBox::~CameraBox() {}
+	void CameraBox::OnCreate() {
+		auto PtrTransform = GetComponent<Transform>();
+		PtrTransform->SetPosition(m_Position);
+		PtrTransform->SetScale(m_Scale);
+		PtrTransform->SetRotation(m_Rotation);
+		//カメラを得る
+
+		auto PtrCamera = dynamic_pointer_cast<LookAtCamera>(OnGetDrawCamera());
+		if (PtrCamera) {
+			//LookAtCameraである
+			//LookAtCameraに注目するオブジェクト（プレイヤー）の設定
+			PtrCamera->SetTargetObject(GetThis<GameObject>());
+			PtrCamera->SetTargetToAt(Vector3(0, 0, -10.0f));
+		}
+
+	
+	}
+
 
 	//--------------------------------------------------------------------------------------
 	///	敵１

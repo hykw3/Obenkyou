@@ -51,6 +51,29 @@ namespace basecross{
 		virtual void OnCreate() override;
 		//‘€ì
 	};
+	//--------------------------------------------------------------------------------------
+	//	—p“r: ƒJƒƒ‰
+	//--------------------------------------------------------------------------------------
+	class CameraBox : public GameObject {
+		Vector3 m_Scale;
+		Vector3 m_Rotation;
+		Vector3 m_Position;
+
+	public:
+		//\’z‚Æ”jŠü
+		CameraBox
+		(
+			const shared_ptr<Stage>& StagePtr,
+			const Vector3& Scale,
+			const Vector3& Rotation,
+			const Vector3& Position
+		);
+		virtual ~CameraBox();
+		//‰Šú‰»
+		virtual void OnCreate() override;
+		//‘€ì
+	};
+
 
 
 

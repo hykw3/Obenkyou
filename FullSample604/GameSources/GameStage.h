@@ -19,6 +19,9 @@ namespace basecross {
 		void CreateViewLight();
 		//プレイヤーの作成
 		void CreatePlayer();
+		//カメラのターゲット作成
+
+		void CreateCameraTg();
 		///ステージナンバー
 		int m_StageNum;
 	public:
