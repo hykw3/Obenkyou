@@ -150,7 +150,7 @@ namespace basecross
 				(
 					Vector3(1.0f, 1.0f, 1.0f),
 					Vector3(0.0f, 0.0f, 0.0f),
-					Vector3(m_ColPos, m_RowPos, 0.0f)
+					Vector3(m_ColPos, 0.0f, m_RowPos)
 				);
 		}
 		break;

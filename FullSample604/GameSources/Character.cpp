@@ -205,7 +205,7 @@ namespace basecross{
 			//LookAtCameraである
 			//LookAtCameraに注目するオブジェクト（プレイヤー）の設定
 			PtrCamera->SetTargetObject(GetThis<GameObject>());
-			PtrCamera->SetTargetToAt(Vector3(0, 0, -10.0f));
+			PtrCamera->SetTargetToAt(Vector3(0, 5, -10));
 		}
 
 	
