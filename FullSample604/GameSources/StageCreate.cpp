@@ -141,8 +141,7 @@ namespace basecross
 
 		//”š‚É‚æ‚Á‚Äì‚é‚à‚Ì‚ğŒˆ‚ß‚é
 		switch (num)
-		{
-
+		{		
 			//ŒÅ’è‚ÌƒuƒƒbƒN
 		case 1:
 		{

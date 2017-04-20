@@ -25,7 +25,7 @@ namespace basecross{
 		auto Ptr = AddComponent<Transform>();
 		Ptr->SetScale(1.0f, 0.25f, 0.25f);	//’¼Œa25ƒZƒ“ƒ`‚Ì‹…‘Ì
 		Ptr->SetRotation(0.0f, 0.0f, 0.0f);
-		Ptr->SetPosition(0, 0.125f, 0);
+		Ptr->SetPosition(1.0f, 1.0f, 3.0f);
 
 		//Rigidbody‚ð‚Â‚¯‚é
 		auto PtrRedid = AddComponent<Rigidbody>();
