@@ -13,6 +13,7 @@
 #include "Character.h"
 #include "Player.h"
 #include "StageCreate.h"
+#include "MeCamera.h"
 
 
 
